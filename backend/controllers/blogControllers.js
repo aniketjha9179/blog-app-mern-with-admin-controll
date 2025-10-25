@@ -1,8 +1,8 @@
-const Blog = require('../models/Blog.js');
+import Blog from '../models/Blog.js';
 
 // @desc    Get all blogs
 // @route   GET /api/blogs
-exports.getAllBlogs = async (req, res) => {
+export const getAllBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find({ published: true })
       .populate('author', 'username email')
@@ -15,7 +15,7 @@ exports.getAllBlogs = async (req, res) => {
 
 // @desc    Get single blog
 // @route   GET /api/blogs/:id
-exports.getBlogById = async (req, res) => {
+export const getBlogById = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
       .populate('author', 'username email');
@@ -32,7 +32,7 @@ exports.getBlogById = async (req, res) => {
 
 // @desc    Create blog (Admin only)
 // @route   POST /api/blogs
-exports.createBlog = async (req, res) => {
+export const createBlog = async (req, res) => {
   try {
     const { title, content, excerpt, image, category, tags, published } = req.body;
 
@@ -55,7 +55,7 @@ exports.createBlog = async (req, res) => {
 
 // @desc    Update blog (Admin only)
 // @route   PUT /api/blogs/:id
-exports.updateBlog = async (req, res) => {
+export const updateBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
 
@@ -77,7 +77,7 @@ exports.updateBlog = async (req, res) => {
 
 // @desc    Delete blog (Admin only)
 // @route   DELETE /api/blogs/:id
-exports.deleteBlog = async (req, res) => {
+export const deleteBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
 
@@ -94,7 +94,7 @@ exports.deleteBlog = async (req, res) => {
 
 // @desc    Get admin's blogs
 // @route   GET /api/blogs/admin/my-blogs
-exports.getAdminBlogs = async (req, res) => {
+export const getAdminBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find({ author: req.admin.id })
       .sort({ createdAt: -1 });

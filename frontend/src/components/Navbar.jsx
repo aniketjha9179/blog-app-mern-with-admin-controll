@@ -18,8 +18,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-indigo-600">
-            MyBlog
+          <Link to="/" className="text-2xl font-bold text-black">
+            webzope
           </Link>
 
           {/* Centered Links (Desktop) */}
@@ -50,7 +50,7 @@ const Navbar = () => {
                 </Link>
                 <button
                   onClick={logout}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+                  className="bg-gradient-to-b from-blue-400 to-blue-500 text-white px-4 py-2 rounded-lg hover:bg-red-700"
                 >
                   Logout
                 </button>

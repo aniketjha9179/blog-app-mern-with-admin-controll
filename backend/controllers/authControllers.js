@@ -1,5 +1,5 @@
-const Admin = require('../models/Admin.js');
-const jwt = require('jsonwebtoken');
+import Admin from '../models/Admin.js';
+import jwt from 'jsonwebtoken';
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -10,7 +10,7 @@ const generateToken = (id) => {
 
 // @desc    Register Admin
 // @route   POST /api/auth/register
-exports.registerAdmin = async (req, res) => {
+export const registerAdmin = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
@@ -42,7 +42,7 @@ exports.registerAdmin = async (req, res) => {
 
 // @desc    Login Admin
 // @route   POST /api/auth/login
-exports.loginAdmin = async (req, res) => {
+export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -66,7 +66,7 @@ exports.loginAdmin = async (req, res) => {
 
 // @desc    Get Admin Profile
 // @route   GET /api/auth/profile
-exports.getAdminProfile = async (req, res) => {
+export const getAdminProfile = async (req, res) => {
   try {
     const admin = await Admin.findById(req.admin.id).select('-password');
     res.json(admin);
